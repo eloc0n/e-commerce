@@ -1,0 +1,418 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<!-- Carousel -->
+<div class="container">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="py-3">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img class="d-block w-100" src="https://cdn.mos.cms.futurecdn.net/X5TyA8uvkGXoNyjFzxcowS.jpg" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="https://cnet2.cbsistatic.com/img/OKtxZ1f0evC6tgqdIEr3BnvUiKA=/1200x675/2017/02/22/d95e8518-beb0-45c3-aba1-d1122bf0663d/three-laptops-01.jpg" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="https://cdn.mos.cms.futurecdn.net/bXiQnGw7tFvBsEMtkqXKKE.jpg" alt="Third slide">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+        </div>
+        
+</div>
+
+
+<!-- Showcase -->
+<section id="showcase">
+    <div class="container text-center">
+      <div class="home-search p-5">
+        <div class="overlay p-5">
+          <h1 class="display-4 mb-4">
+            Laptop Searching Just Got So Easy
+          </h1>
+          <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quas, asperiores eveniet vel nostrum magnam
+            voluptatum tempore! Consectetur, id commodi!</p>
+          <div class="search">
+            <form action="search.html">
+              <!-- Form Row 1 -->
+              <div class="form-row">
+                <div class="col-md-4 mb-3">
+                  <label class="sr-only">Keywords</label>
+                  <input type="text" name="keywords" class="form-control" placeholder="Keyword (Cores, Size, Screen etc)">
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label class="sr-only">Screen Resolution</label>
+                    <select name="screen" class="form-control">
+                      <option selected="true" disabled="disabled">Screen Resolution (All)</option>
+                      <option value="4">768p</option>
+                      <option value="6">1080p</option>
+                      <option value="8">1440p</option>
+                    </select>
+                  </div>
+
+                <div class="col-md-4 mb-3">
+                  <label class="sr-only">Cores</label>
+                  <select name="cores" class="form-control">
+                    <option selected="true" disabled="disabled">Cores (All)</option>
+                    <option value="4">4</option>
+                    <option value="6">6</option>
+                    <option value="8">8</option>
+                  </select>
+                </div>
+              </div>
+              <!-- Form Row 2 -->
+              <div class="form-row">
+                <div class="col-md-4 mb-3">
+                  <label class="sr-only">Manufacturer</label>
+                  <select name="manufacturer" class="form-control">
+                    <option selected="true" disabled="disabled">Manufacturer (All)</option>
+                    <option value="AL">ASUS</option>
+                    <option value="AK">Acer</option>
+                    <option value="AZ">Lenovo</option>
+                  </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <select name="price" class="form-control" id="type">
+                    <option selected="true" disabled="disabled">Max Price (Any)</option>
+                    <option value="100000">500 €</option>
+                    <option value="200000">750 €</option>
+                    <option value="300000">1000 €</option>
+                    <option value="400000">1500 €</option>
+                  </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <select name="ram" class="form-control" id="type">
+                      <option selected="true" disabled="disabled">Ram (Any)</option>
+                      <option value="100000">4 gb</option>
+                      <option value="200000">8 gb</option>
+                      <option value="300000">16 gb</option>
+                      <option value="400000">32 gb</option>
+                    </select>
+                  </div>
+              </div>
+              <button class="btn btn-secondary btn-block mt-4" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section id="listings" class="py-4">
+    <div class="container">
+      <h3 class="text-center mb-3">Bestsellers</h3>
+      <div class="row">
+        <!-- Product 1 -->
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card listing-preview">
+            <img class="card-img-top" src="https://i.gadgets360cdn.com/products/large/asus-vivobook15-x509-1287x800-1567590182.jpg" alt="">
+            <div class="card-img-overlay">
+              <h2>
+                <span class="badge badge-secondary text-white">1399 €</span>
+              </h2>
+            </div>
+            <div class="card-body">
+              <div class="listing-heading text-center">
+                <h4 class="text-primary">Asus VivoBook 15</h4>
+              </div>
+              <hr>
+              <div class="row py-2 text-secondary">
+                <div class="col-6">
+                  <i class="fas fa-microchip"></i> Intel i7-9750h
+                </div>
+                <div class="col-6">
+                  <i class="fas fa-microchip"></i> Cores: 6
+                </div>
+              </div>
+              <div class="row py-2 text-secondary">
+                <div class="col-6">
+                  <i class="fas fa-microchip"></i> Threads: 12</div>
+                <div class="col-6">
+                  <i class="fas fa-hdd"></i> Storage: 512 Gb</div>
+              </div>
+              <div class="row py-2 text-secondary">
+                <div class="col-6">
+                  <i class="fas fa-hdd"></i> Type: SSD</div>
+                <div class="col-6">
+                  <i class="fas fa-laptop"></i> Size: 15.6"</div>
+              </div>
+              <div class="row py-2 text-secondary">
+                <div class="col-6">
+                  <i class="fas fa-laptop"></i> Screen: 1080p</div>
+                <div class="col-6">
+                  <i class="fas fa-laptop"></i> Refresh: 60 hz</div>
+              </div>
+              <div class="row py-2 text-secondary">
+                <div class="col-6">
+                  <i class="fas fa-laptop"></i> Type: IPS</div>
+                <div class="col-6">
+                  <i class="fas fa-memory"></i> RAM: 16 gb</div>
+              </div>
+              <div class="row py-2 text-secondary">
+                <div class="col-6">
+                  <i class="fas fa-microchip"></i> GPU: GTX 1650</div>
+                <div class="col-6">
+                  <i class="fas fa-memory"></i> GPU RAM: 4 gb</div>
+              </div>
+              
+              <hr>
+              <div class="row py-2 text-secondary">
+                <div class="col-6">
+                  <i class="fas fa-industry"></i> ASUS
+                </div>
+                <div class="col-6">
+                  <i class="fas fa-euro-sign"></i> 1399
+                </div>
+              </div>
+              <hr>
+              <div class="row text-secondary pb-2">
+                <div class="col-6">
+                    <a href="#" class="btn btn-secondary btn-block">More Info</a>
+                </div>  
+                <div class="col-6">
+                    <a href="#" class="btn btn-primary btn-block">Add to cart</a>
+                </div>  
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card listing-preview">
+              <img class="card-img-top" src="https://i.gadgets360cdn.com/products/large/asus-vivobook15-x509-1287x800-1567590182.jpg" alt="">
+              <div class="card-img-overlay">
+                <h2>
+                  <span class="badge badge-secondary text-white">1399 €</span>
+                </h2>
+              </div>
+              <div class="card-body">
+                <div class="listing-heading text-center">
+                  <h4 class="text-primary">Asus VivoBook 15</h4>
+                </div>
+                <hr>
+                <div class="row py-2 text-secondary">
+                  <div class="col-6">
+                    <i class="fas fa-microchip"></i> Intel i7-9750h
+                  </div>
+                  <div class="col-6">
+                    <i class="fas fa-microchip"></i> Cores: 6
+                  </div>
+                </div>
+                <div class="row py-2 text-secondary">
+                  <div class="col-6">
+                    <i class="fas fa-microchip"></i> Threads: 12</div>
+                  <div class="col-6">
+                    <i class="fas fa-hdd"></i> Storage: 512 Gb</div>
+                </div>
+                <div class="row py-2 text-secondary">
+                  <div class="col-6">
+                    <i class="fas fa-hdd"></i> Type: SSD</div>
+                  <div class="col-6">
+                    <i class="fas fa-laptop"></i> Size: 15.6"</div>
+                </div>
+                <div class="row py-2 text-secondary">
+                  <div class="col-6">
+                    <i class="fas fa-laptop"></i> Screen: 1080p</div>
+                  <div class="col-6">
+                    <i class="fas fa-laptop"></i> Refresh: 60 hz</div>
+                </div>
+                <div class="row py-2 text-secondary">
+                    <div class="col-6">
+                      <i class="fas fa-laptop"></i> Type: IPS</div>
+                    <div class="col-6">
+                      <i class="fas fa-memory"></i> RAM: 16 gb</div>
+                  </div>
+                  <div class="row py-2 text-secondary">
+                    <div class="col-6">
+                      <i class="fas fa-microchip"></i> GPU: GTX 1650</div>
+                    <div class="col-6">
+                      <i class="fas fa-memory"></i> GPU RAM: 4 gb</div>
+                  </div>
+                <hr>
+                <div class="row py-2 text-secondary">
+                  <div class="col-6">
+                    <i class="fas fa-industry"></i> ASUS
+                  </div>
+                  <div class="col-6">
+                    <i class="fas fa-euro-sign"></i> 1399
+                  </div>
+                </div>
+                <hr>
+                <div class="row text-secondary pb-2">
+                  <div class="col-6">
+                      <a href="#" class="btn btn-secondary btn-block">More Info</a>
+                  </div>  
+                  <div class="col-6">
+                      <a href="#" class="btn btn-primary btn-block">Add to cart</a>
+                  </div>  
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <!-- Product 3 -->
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card listing-preview">
+              <img class="card-img-top" src="https://i.gadgets360cdn.com/products/large/asus-vivobook15-x509-1287x800-1567590182.jpg" alt="">
+              <div class="card-img-overlay">
+                <h2>
+                  <span class="badge badge-secondary text-white">1399 €</span>
+                </h2>
+              </div>
+              <div class="card-body">
+                <div class="listing-heading text-center">
+                  <h4 class="text-primary">Asus VivoBook 15</h4>
+                </div>
+                <hr>
+                <div class="row py-2 text-secondary">
+                  <div class="col-6">
+                    <i class="fas fa-microchip"></i> Intel i7-9750h
+                  </div>
+                  <div class="col-6">
+                    <i class="fas fa-microchip"></i> Cores: 6
+                  </div>
+                </div>
+                <div class="row py-2 text-secondary">
+                  <div class="col-6">
+                    <i class="fas fa-microchip"></i> Threads: 12</div>
+                  <div class="col-6">
+                    <i class="fas fa-hdd"></i> Storage: 512 Gb</div>
+                </div>
+                <div class="row py-2 text-secondary">
+                  <div class="col-6">
+                    <i class="fas fa-hdd"></i> Type: SSD</div>
+                  <div class="col-6">
+                    <i class="fas fa-laptop"></i> Size: 15.6"</div>
+                </div>
+                <div class="row py-2 text-secondary">
+                  <div class="col-6">
+                    <i class="fas fa-laptop"></i> Screen: 1080p</div>
+                  <div class="col-6">
+                    <i class="fas fa-laptop"></i> Refresh: 60 hz</div>
+                </div>
+                <div class="row py-2 text-secondary">
+                    <div class="col-6">
+                      <i class="fas fa-laptop"></i> Type: IPS</div>
+                    <div class="col-6">
+                      <i class="fas fa-memory"></i> RAM: 16 gb</div>
+                  </div>
+                  <div class="row py-2 text-secondary">
+                    <div class="col-6">
+                      <i class="fas fa-microchip"></i> GPU: GTX 1650</div>
+                    <div class="col-6">
+                      <i class="fas fa-memory"></i> GPU RAM: 4 gb</div>
+                  </div>
+                <hr>
+                <div class="row py-2 text-secondary">
+                  <div class="col-6">
+                    <i class="fas fa-industry"></i> ASUS
+                  </div>
+                  <div class="col-6">
+                    <i class="fas fa-euro-sign"></i> 1399
+                  </div>
+                </div>
+                <hr>
+                <div class="row text-secondary pb-2">
+                  <div class="col-6">
+                      <a href="#" class="btn btn-secondary btn-block">More Info</a>
+                  </div>  
+                  <div class="col-6">
+                      <a href="#" class="btn btn-primary btn-block">Add to cart</a>
+                  </div>  
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="py-4 bg-secondary text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+        <hr>
+          <h3>Contact</h3>
+          <hr>
+          <ul class="navbar-nav">
+            <div class="py-3">
+                <li><i class="fas fa-map-marker"></i> 772 Selby Street Garden City, NY 11530</li>
+            </div> 
+            <div class="py-3">
+                <li><i class="fas fa-envelope-open"></i> contact@laptopuniverse.co</li>
+            </div>  
+            <div class="py-3">
+                <li><i class="fas fa-phone"></i> (012)-12 34 567</li>
+            </div>
+          </ul>
+        </div>
+
+        <div class="col-md-4">
+        <hr>
+          <h3>Account</h3>
+          <hr>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+                <div class="py-2">
+                    <a class="nav-link text-light" href="#">
+                        <i class="fas fa-user-plus"></i> Register
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div class="py-2">
+                    <a class="nav-link text-light" href="#">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <div class="py-2">
+                    <a class="nav-link text-light" href="#">
+                        <i class="fas fa-heart"></i> Favorite List
+                    </a>
+                </div>
+            </li>
+        </ul>
+        </div>
+
+        <div class="col-md-4">
+        <hr>
+          <h3>Hours You can find us</h3>
+          <hr>
+          <ul class="navbar-nav">
+            <div class="py-3">
+                <li>Monday & Wednesday: 09:00 - 18:00</li>
+            </div>  
+            <div class="py-3">
+                <li>Tuesday, Thursday & Friday: 09:00 - 19:00</li>
+            </div>
+            <div class="py-3">
+                <li>Sunday: 09:00 - 15:00</li>
+            </div>
+        </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+{% endblock %}
