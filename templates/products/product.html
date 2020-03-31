@@ -3,142 +3,180 @@
 
 {% block content %}
 
-     <!-- Breadcrumb -->
+  <!-- Breadcrumb -->
   <section id="bc" class="mt-3">
     <div class="container">
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="index.html">Home</a>
+            <a href="{% url 'home' %}">Home</a>
           </li>
           <li class="breadcrumb-item">
-            <a href="listings.html">Listings</a>
+            <a href="{% url 'products' %}">Products</a>
           </li>
-          <li class="breadcrumb-item active">42 Drivewood Circle</li>
+          <li class="breadcrumb-item active">{{ laptop.title }}</li>
         </ol>
       </nav>
     </div>
   </section>
 
-  <!-- Listing -->
+  <!-- Product -->
   <section id="listing" class="py-4">
     <div class="container">
-      <a href="listings.html" class="btn btn-light mb-4">Back To Listings</a>
+      <a href="{% url 'products' %}" class="btn btn-light mb-4">Back To Products</a>
       <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-5">
           <!-- Home Main Image -->
-          <img src="assets/img/homes/home-1.jpg" alt="" class="img-main img-fluid mb-3">
+          <img src="{{ laptop.photo_main.url }}" alt="" class="img-main img-fluid mb-3">
           <!-- Thumbnails -->
           <div class="row mb-5 thumbs">
-            <div class="col-md-2">
-              <a href="assets/img/homes/home-inside-1.jpg" data-lightbox="home-images">
-                <img src="assets/img/homes/home-inside-1.jpg" alt="" class="img-fluid">
+            {% if laptop.photo_1 %}
+            <div class="col-md-4">
+              <a href="{{ laptop.photo_1.url }}" data-lightbox="home-images">
+                <img src="{{ laptop.photo_1.url }}" alt="" class="img-fluid">
               </a>
             </div>
-            <div class="col-md-2">
-              <a href="assets/img/homes/home-inside-2.jpg" data-lightbox="home-images">
-                <img src="assets/img/homes/home-inside-2.jpg" alt="" class="img-fluid">
+            {% endif %}
+            {% if laptop.photo_2 %}
+            <div class="col-md-4">
+              <a href="{{ laptop.photo_2.url }}" data-lightbox="home-images">
+                <img src="{{ laptop.photo_2.url }}" alt="" class="img-fluid">
               </a>
             </div>
-            <div class="col-md-2">
-              <a href="assets/img/homes/home-inside-3.jpg" data-lightbox="home-images">
-                <img src="assets/img/homes/home-inside-3.jpg" alt="" class="img-fluid">
+            {% endif %}
+            {% if laptop.photo_3 %}
+            <div class="col-md-4">
+              <a href="{{ laptop.photo_3.url }}" data-lightbox="home-images">
+                <img src="{{ laptop.photo_3.url }}" alt="" class="img-fluid">
               </a>
             </div>
-            <div class="col-md-2">
-              <a href="assets/img/homes/home-inside-4.jpg" data-lightbox="home-images">
-                <img src="assets/img/homes/home-inside-4.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-            <div class="col-md-2">
-              <a href="assets/img/homes/home-inside-5.jpg" data-lightbox="home-images">
-                <img src="assets/img/homes/home-inside-5.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-            <div class="col-md-2">
-              <a href="assets/img/homes/home-inside-6.jpg" data-lightbox="home-images">
-                <img src="assets/img/homes/home-inside-6.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-          <!-- Fields -->
-          <div class="row mb-5 fields">
-            <div class="col-md-6">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-money-bill-alt"></i> Asking Price:
-                  <span class="float-right">$490,000</span>
-                </li>
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-bed"></i> Bedrooms:
-                  <span class="float-right">3</span>
-                </li>
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-bath"></i> Bathrooms:
-                  <span class="float-right">2</span>
-                </li>
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-car"></i> Garage:
-                  <span class="float-right">2
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-6">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-th-large"></i> Square Feet:
-                  <span class="float-right">3200</span>
-                </li>
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-square"></i> Lot Size:
-                  <span class="float-right">2.5 Acres
-                  </span>
-                </li>
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-calendar"></i> Listing Date:
-                  <span class="float-right">8/30/2018</span>
-                </li>
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-bed"></i> Realtor:
-                  <span class="float-right">Kyle Brown
-                  </span>
-                </li>
-
-
-              </ul>
-            </div>
-          </div>
-
-          <!-- Description -->
-          <div class="row mb-5">
-            <div class="col-md-12">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia recusandae esse reiciendis officia omnis non rerum dicta
-              cupiditate nostrum molestias deserunt aut minus inventore animi atque, consequuntur ad fugit. Possimus culpa
-              blanditiis repellendus ipsa similique ullam, natus error dolor harum.
-            </div>
+            {% endif %}
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-7">
           <div class="card mb-3">
-            <img class="card-img-top" src="assets/img/realtors/kyle.jpg" alt="Seller of the month">
-            <div class="card-body">
-              <h5 class="card-title">Property Realtor</h5>
-              <h6 class="text-secondary">Kyle Brown</h6>
+            <!-- <img class="card-img-top" src="assets/img/realtors/kyle.jpg" alt="Seller of the month"> -->
+            <div class="card-body text-center">
+              <h1 class="card-title">{{ laptop.title }}</h1>
+              <h2 class="text-secondary">Price: {{ laptop.price }}</h2>
+              <h6>Product id: 1aq1DAS3213{{ laptop.product_id }}</h6>
             </div>
           </div>
-          <button class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Make An Inquiry</button>
+          <form action="" method="">
+            {% csrf_token %}
+            <div class="row mb-4">
+              <div class="col-4">
+                <div class="input-group">
+                  <select class="custom-select" id="inputGroupSelect01">
+                    <option selected value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select>
+                </div>
+              </div>  
+              <div class="col-4">
+                <a href="#" class="btn btn-primary btn-block">Add to cart</a>
+              </div> 
+          </form>
+              <div class="col-4">
+                <a href="#" class="btn btn-danger btn-block"><i class="fas fa-heart"></i> Favourite</a>
+              </div> 
+            </div>
+            <div class="py-5">
+              <button class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Ask us anything</button>
+            </div>
         </div>
+       
       </div>
     </div>
   </section>
 
+  <section>
+    <div class="container">
+       <!-- Description -->
+       <div class="row mb-5">
+        <div class="col-md-12">
+          {{ laptop.description }}
+        </div>
+      </div>
+       <!-- Fields -->
+       <div class="row mb-5 fields">
+        <div class="col-md-12">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-secondary">
+              <i class="fas fa-industry"></i> Manufacturer:
+              <span class="float-right">{{ laptop.manufacturer }}</span>
+            </li>
+            <li class="list-group-item text-secondary">
+              <i class="fab fa-windows"></i> OS:
+              <span class="float-right">{{ laptop.operating_system }}</span>
+            </li>
+            <li class="list-group-item text-secondary">
+              <i class="fas fa-microchip"></i> CPU: 
+              <span class="float-right">{{ laptop.cpu }}</span>
+            </li>
+            <li class="list-group-item text-secondary">
+              <i class="fas fa-microchip"></i> Cores:
+              <span class="float-right">{{ laptop.cores }}</span>
+            </li>
+            <li class="list-group-item text-secondary">
+              <i class="fas fa-microchip"></i> Threads:
+              <span class="float-right">{{ laptop.threads }}
+              </span>
+            </li>
+            <li class="list-group-item text-secondary">
+              <i class="fas fa-hdd"></i> Storage:
+              <span class="float-right">{{ laptop.storage }} Gb</span>
+            </li>
+            <li class="list-group-item text-secondary">
+              <i class="fas fa-hdd"></i> Type:
+              <span class="float-right">{{ laptop.storage_type }}
+              </span>
+            </li>
+            <li class="list-group-item text-secondary">
+              <i class="fas fa-laptop"></i> Size:
+              <span class="float-right">{{ laptop.screen_size }}"</span>
+            </li>
+            <li class="list-group-item text-secondary">
+              <i class="fas fa-laptop"></i> Screen:
+              <span class="float-right">{{ laptop.screen_resolution }}p</span>
+            </li>
+            <li class="list-group-item text-secondary">
+              <i class="fas fa-laptop"></i> Refresh:
+              <span class="float-right">{{ laptop.refresh }} hz</span>
+            </li>
+            <li class="list-group-item text-secondary">
+              <i class="fas fa-laptop"></i> Panel:
+              <span class="float-right">{{ laptop.screen_panel }}</span>
+            </li>
+            <li class="list-group-item text-secondary">
+              <i class="fas fa-memory"></i> RAM:
+              <span class="float-right">{{ laptop.ram }} gb</span>
+            </li>
+            <li class="list-group-item text-secondary">
+              <i class="fas fa-memory"></i> RAM:
+              <span class="float-right">{{ laptop.ram_type }}</span>
+            </li>
+            <li class="list-group-item text-secondary">
+              <i class="fas fa-microchip"></i> GPU:
+              <span class="float-right">{{ laptop.gpu }}</span>
+            </li>
+            <li class="list-group-item text-secondary">
+              <i class="fas fa-memory"></i> GPU RAM:
+              <span class="float-right">{{ laptop.gpu_ram }} gb</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  
   <!-- Inquiry Modal -->
   <div class="modal fade" id="inquiryModal" role="dialog">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="inquiryModalLabel">Make An Inquiry</h5>
+          <h5 class="modal-title" id="inquiryModalLabel">Ask us anything</h5>
           <button type="button" class="close" data-dismiss="modal">
             <span>&times;</span>
           </button>
@@ -146,8 +184,8 @@
         <div class="modal-body">
           <form>
             <div class="form-group">
-              <label for="property_name" class="col-form-label">Property:</label>
-              <input type="text" name="listing" class="form-control" value="45 Drivewood Cirlce" disabled>
+              <label for="product_name" class="col-form-label">Product:</label>
+              <input type="text" name="product" class="form-control" value="{{ laptop.title }}" disabled>
             </div>
             <div class="form-group">
               <label for="name" class="col-form-label">Name:</label>

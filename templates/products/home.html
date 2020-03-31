@@ -120,227 +120,86 @@
       <h3 class="text-center mb-3">Bestsellers</h3>
       <div class="row">
         <!-- Product 1 -->
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card listing-preview">
-            <img class="card-img-top" src="https://i.gadgets360cdn.com/products/large/asus-vivobook15-x509-1287x800-1567590182.jpg" alt="">
-            <div class="card-img-overlay">
-              <h2>
-                <span class="badge badge-secondary text-white">1399 €</span>
-              </h2>
-            </div>
-            <div class="card-body">
-              <div class="listing-heading text-center">
-                <h4 class="text-primary">Asus VivoBook 15</h4>
-              </div>
-              <hr>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-microchip"></i> Intel i7-9750h
+        {% if products %}
+          {% for product in products %}
+            <div class="col-md-6 col-lg-4 mb-4">
+              <div class="card listing-preview">
+                <img class="card-img-top" src="{{ product.photo_main.url }}" alt="">
+                <div class="card-img-overlay">
+                  <h2>
+                    <span class="badge badge-secondary text-white">{{ product.price }} €</span>
+                  </h2>
                 </div>
-                <div class="col-6">
-                  <i class="fas fa-microchip"></i> Cores: 6
-                </div>
-              </div>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-microchip"></i> Threads: 12</div>
-                <div class="col-6">
-                  <i class="fas fa-hdd"></i> Storage: 512 Gb</div>
-              </div>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-hdd"></i> Type: SSD</div>
-                <div class="col-6">
-                  <i class="fas fa-laptop"></i> Size: 15.6"</div>
-              </div>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-laptop"></i> Screen: 1080p</div>
-                <div class="col-6">
-                  <i class="fas fa-laptop"></i> Refresh: 60 hz</div>
-              </div>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-laptop"></i> Type: IPS</div>
-                <div class="col-6">
-                  <i class="fas fa-memory"></i> RAM: 16 gb</div>
-              </div>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-microchip"></i> GPU: GTX 1650</div>
-                <div class="col-6">
-                  <i class="fas fa-memory"></i> GPU RAM: 4 gb</div>
-              </div>
-              
-              <hr>
-              <div class="row py-2 text-secondary">
-                <div class="col-6">
-                  <i class="fas fa-industry"></i> ASUS
-                </div>
-                <div class="col-6">
-                  <i class="fas fa-euro-sign"></i> 1399
-                </div>
-              </div>
-              <hr>
-              <div class="row text-secondary pb-2">
-                <div class="col-6">
-                    <a href="#" class="btn btn-secondary btn-block">More Info</a>
-                </div>  
-                <div class="col-6">
-                    <a href="#" class="btn btn-primary btn-block">Add to cart</a>
-                </div>  
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product 2 -->
-        <div class="col-md-6 col-lg-4 mb-4">
-            <div class="card listing-preview">
-              <img class="card-img-top" src="https://i.gadgets360cdn.com/products/large/asus-vivobook15-x509-1287x800-1567590182.jpg" alt="">
-              <div class="card-img-overlay">
-                <h2>
-                  <span class="badge badge-secondary text-white">1399 €</span>
-                </h2>
-              </div>
-              <div class="card-body">
-                <div class="listing-heading text-center">
-                  <h4 class="text-primary">Asus VivoBook 15</h4>
-                </div>
-                <hr>
-                <div class="row py-2 text-secondary">
-                  <div class="col-6">
-                    <i class="fas fa-microchip"></i> Intel i7-9750h
+                <div class="card-body">
+                  <div class="listing-heading text-center">
+                    <h4 class="text-primary">{{ product.title }}</h4>
                   </div>
-                  <div class="col-6">
-                    <i class="fas fa-microchip"></i> Cores: 6
-                  </div>
-                </div>
-                <div class="row py-2 text-secondary">
-                  <div class="col-6">
-                    <i class="fas fa-microchip"></i> Threads: 12</div>
-                  <div class="col-6">
-                    <i class="fas fa-hdd"></i> Storage: 512 Gb</div>
-                </div>
-                <div class="row py-2 text-secondary">
-                  <div class="col-6">
-                    <i class="fas fa-hdd"></i> Type: SSD</div>
-                  <div class="col-6">
-                    <i class="fas fa-laptop"></i> Size: 15.6"</div>
-                </div>
-                <div class="row py-2 text-secondary">
-                  <div class="col-6">
-                    <i class="fas fa-laptop"></i> Screen: 1080p</div>
-                  <div class="col-6">
-                    <i class="fas fa-laptop"></i> Refresh: 60 hz</div>
-                </div>
-                <div class="row py-2 text-secondary">
+                  <hr>
+                  <div class="row py-2 text-secondary">
                     <div class="col-6">
-                      <i class="fas fa-laptop"></i> Type: IPS</div>
+                      <i class="fas fa-microchip"></i> {{ product.cpu }}
+                    </div>
                     <div class="col-6">
-                      <i class="fas fa-memory"></i> RAM: 16 gb</div>
+                      <i class="fas fa-microchip"></i> Cores: {{ product.cores }}
+                    </div>
                   </div>
                   <div class="row py-2 text-secondary">
                     <div class="col-6">
-                      <i class="fas fa-microchip"></i> GPU: GTX 1650</div>
+                      <i class="fas fa-microchip"></i> Threads: {{ product.threads }}</div>
                     <div class="col-6">
-                      <i class="fas fa-memory"></i> GPU RAM: 4 gb</div>
-                  </div>
-                <hr>
-                <div class="row py-2 text-secondary">
-                  <div class="col-6">
-                    <i class="fas fa-industry"></i> ASUS
-                  </div>
-                  <div class="col-6">
-                    <i class="fas fa-euro-sign"></i> 1399
-                  </div>
-                </div>
-                <hr>
-                <div class="row text-secondary pb-2">
-                  <div class="col-6">
-                      <a href="#" class="btn btn-secondary btn-block">More Info</a>
-                  </div>  
-                  <div class="col-6">
-                      <a href="#" class="btn btn-primary btn-block">Add to cart</a>
-                  </div>  
-                </div>
-              </div>
-            </div>
-          </div>
-
-        <!-- Product 3 -->
-        <div class="col-md-6 col-lg-4 mb-4">
-            <div class="card listing-preview">
-              <img class="card-img-top" src="https://i.gadgets360cdn.com/products/large/asus-vivobook15-x509-1287x800-1567590182.jpg" alt="">
-              <div class="card-img-overlay">
-                <h2>
-                  <span class="badge badge-secondary text-white">1399 €</span>
-                </h2>
-              </div>
-              <div class="card-body">
-                <div class="listing-heading text-center">
-                  <h4 class="text-primary">Asus VivoBook 15</h4>
-                </div>
-                <hr>
-                <div class="row py-2 text-secondary">
-                  <div class="col-6">
-                    <i class="fas fa-microchip"></i> Intel i7-9750h
-                  </div>
-                  <div class="col-6">
-                    <i class="fas fa-microchip"></i> Cores: 6
-                  </div>
-                </div>
-                <div class="row py-2 text-secondary">
-                  <div class="col-6">
-                    <i class="fas fa-microchip"></i> Threads: 12</div>
-                  <div class="col-6">
-                    <i class="fas fa-hdd"></i> Storage: 512 Gb</div>
-                </div>
-                <div class="row py-2 text-secondary">
-                  <div class="col-6">
-                    <i class="fas fa-hdd"></i> Type: SSD</div>
-                  <div class="col-6">
-                    <i class="fas fa-laptop"></i> Size: 15.6"</div>
-                </div>
-                <div class="row py-2 text-secondary">
-                  <div class="col-6">
-                    <i class="fas fa-laptop"></i> Screen: 1080p</div>
-                  <div class="col-6">
-                    <i class="fas fa-laptop"></i> Refresh: 60 hz</div>
-                </div>
-                <div class="row py-2 text-secondary">
-                    <div class="col-6">
-                      <i class="fas fa-laptop"></i> Type: IPS</div>
-                    <div class="col-6">
-                      <i class="fas fa-memory"></i> RAM: 16 gb</div>
+                      <i class="fas fa-hdd"></i> Storage: {{ product.storage }} Gb</div>
                   </div>
                   <div class="row py-2 text-secondary">
                     <div class="col-6">
-                      <i class="fas fa-microchip"></i> GPU: GTX 1650</div>
+                      <i class="fas fa-hdd"></i> Type: {{ product.storage_type }}</div>
                     <div class="col-6">
-                      <i class="fas fa-memory"></i> GPU RAM: 4 gb</div>
+                      <i class="fas fa-laptop"></i> Size: {{ product.screen_size }}"</div>
                   </div>
-                <hr>
-                <div class="row py-2 text-secondary">
-                  <div class="col-6">
-                    <i class="fas fa-industry"></i> ASUS
+                  <div class="row py-2 text-secondary">
+                    <div class="col-6">
+                      <i class="fas fa-laptop"></i> Screen: {{ product.screen_resolution }}p</div>
+                    <div class="col-6">
+                      <i class="fas fa-laptop"></i> Refresh: {{ product.refresh }} hz</div>
                   </div>
-                  <div class="col-6">
-                    <i class="fas fa-euro-sign"></i> 1399
+                  <div class="row py-2 text-secondary">
+                    <div class="col-6">
+                      <i class="fas fa-laptop"></i> Panel: {{ product.screen_panel }}</div>
+                    <div class="col-6">
+                      <i class="fas fa-memory"></i> RAM: {{ product.ram }} gb</div>
                   </div>
-                </div>
-                <hr>
-                <div class="row text-secondary pb-2">
-                  <div class="col-6">
-                      <a href="#" class="btn btn-secondary btn-block">More Info</a>
-                  </div>  
-                  <div class="col-6">
-                      <a href="#" class="btn btn-primary btn-block">Add to cart</a>
-                  </div>  
+                  <div class="row py-2 text-secondary">
+                    <div class="col-6">
+                      <i class="fas fa-microchip"></i> GPU: {{ product.gpu }}</div>
+                    <div class="col-6">
+                      <i class="fas fa-memory"></i> GPU RAM: {{ product.gpu_ram }} gb</div>
+                  </div>
+                  
+                  <hr>
+                  <div class="row py-2 text-secondary">
+                    <div class="col-6">
+                      <i class="fas fa-industry"></i> {{ product.manufacturer }}
+                    </div>
+                    <div class="col-6">
+                      <i class="fas fa-euro-sign"></i> {{ product.price }}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row text-secondary pb-2">
+                    <div class="col-6">
+                        <a href="{% url 'product' product.id %}" class="btn btn-secondary btn-block">More Info</a>
+                    </div>  
+                    <div class="col-6">
+                        <a href="#" class="btn btn-primary btn-block">Add to cart</a>
+                    </div>  
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          {% endfor %}
+        {% else %}
+          <p>Nothing to show</p>
+        {% endif %}
+      
       </div>
     </div>
   </section>
