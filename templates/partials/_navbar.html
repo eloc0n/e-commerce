@@ -19,23 +19,36 @@
         </ul>
 
         <ul class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
+            <li class="nav-item mr-3">
+              <a class="nav-link" href="#">
+                Welcome <strong>{{ user }}</strong>
+              </a>
+            </li>
+            <li class="nav-item mr-3">
+              <a class="nav-link" href="#">
+                <i class="fas fa-sign-out-alt"></i>Logout</a>
+            </li>
+          {% else %}
+            <li class="nav-item mr-3">
+              <a class="nav-link" href="#">
+                <i class="fas fa-user-plus"></i> Register</a>
+            </li>
+            <li class="nav-item mr-3">
+              <a class="nav-link" href="#">
+                <i class="fas fa-sign-in-alt"></i>Login</a>
+            </li>
+          {% endif %}
           <li class="nav-item mr-3">
-            <a class="nav-link" href="#">
-              <i class="fas fa-user-plus"></i> Register</a>
-          </li>
-          <li class="nav-item mr-3">
-            <a class="nav-link" href="#">
-              <i class="fas fa-sign-in-alt"></i>Login</a>
-              <!-- {% if not request.session.items_total %}
+            <a class="nav-link" href="{% url 'cart' %}">
+              <i class="fas fa-shopping-cart"></i>Cart
+              <span class="badge badge-light">
+              {% if not request.session.items_total %}
                 0 
               {% else %}
                 {{ request.session.items_total }}
-              {% endif %} -->
-          </li>
-          <li class="nav-item mr-3">
-            <a class="nav-link" href="#">
-              <i class="fas fa-shopping-cart"></i>Cart
-              <span class="badge badge-light">0</span>
+              {% endif %}
+              </span>
             </a>
           </li>
         </ul>
