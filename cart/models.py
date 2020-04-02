@@ -4,7 +4,7 @@ from products.models import Laptop
 
 # Create your models here.
 class CartItem(models.Model):
-    cart = models.ForeignKey('Cart', on_delete=models.CASCADE)
+    cart = models.ForeignKey('Cart', on_delete=models.CASCADE, null=True, blank=True)
     product = models.ForeignKey(Laptop, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     line_total = models.DecimalField(default=10.99, max_digits=1000, decimal_places=2)

@@ -47,6 +47,25 @@ def cart(request):
 
 
 
+def remove_from_cart(request, pk):
+    try:
+        the_id = request.session['cart_id']
+        cart = Cart.objects.get(id=the_id)
+        print(cart)
+    except:
+        print('hi')
+        return redirect(reverse('cart'))
+
+    cartitem = CartItem.objects.get(id=pk)
+    cartitem.cart = None
+    # cartitem.delete()
+    cartitem.save()
+    print('hi2')
+
+    return redirect(reverse('cart'))
+        
+
+
 def add_to_cart(request, pk):
 
     request.session.set_expiry(3600)
@@ -81,5 +100,29 @@ def add_to_cart(request, pk):
         
             return redirect(reverse('cart'))
 
+
+    return redirect(reverse('cart'))
+
+
+
+def update_cart(request, pk):
+
+    request.session.set_expiry(3600)
+    
+    try:
+        the_id = request.session['cart_id']
+    except:
+        pass
+
+    cart = Cart.objects.get(id=the_id)
+
+    if request.method == 'POST':
+        qty = request.POST['qty']
+        if int(qty) >= 1:
+            cart_item = CartItem.objects.get(id=pk)
+            cart_item.quantity = qty
+            cart_item.save()
+        
+            return redirect(reverse('cart'))
 
     return redirect(reverse('cart'))

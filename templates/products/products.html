@@ -87,12 +87,18 @@
                 </div>
                 <hr>
                 <div class="row text-secondary pb-2">
-                  <div class="col-6">
+                  <div class="col-12">
                       <a href="{% url 'product' laptop.id %}" class="btn btn-secondary btn-block">More Info</a>
-                  </div>  
-                  <div class="col-6">
-                      <a href="#" class="btn btn-primary btn-block">Add to cart</a>
-                  </div>  
+                  </div> 
+                    <div class="col-6 py-2">
+                    <form action="{% url 'add_to_cart' laptop.id %}" method="POST">
+                    {% csrf_token %}
+                      <input class="form-control" name="qty" type="number" value="1" min="1" >
+                    </div> 
+                    <div class="col-6 py-2">
+                      <input type="submit" class="btn btn-primary btn-block" value="Add to cart">
+                    </div> 
+                  </form>
                 </div>
               </div>
             </div>
