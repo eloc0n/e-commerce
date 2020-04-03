@@ -59,7 +59,7 @@ class Laptop(models.Model):
     ram = models.CharField(max_length=20, choices=RAM_CHOICES)
     ram_type = models.CharField(max_length=20, default='DDR4')
     gpu = models.CharField(max_length=120)
-    gpu_ram = models.IntegerField()
+    gpu_ram = models.IntegerField(blank=True, null=True)
     description = models.TextField()
     price = models.DecimalField(max_digits=1000, decimal_places=2)
     photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load humanize %}
 
 {% block content %}
 
@@ -48,21 +49,21 @@
           <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quas, asperiores eveniet vel nostrum magnam
             voluptatum tempore! Consectetur, id commodi!</p>
           <div class="search">
-            <form action="search.html">
+            <form action="{% url 'search' %}">
               <!-- Form Row 1 -->
               <div class="form-row">
                 <div class="col-md-4 mb-3">
                   <label class="sr-only">Keywords</label>
-                  <input type="text" name="keywords" class="form-control" placeholder="Keyword (Cores, Size, Screen etc)">
+                  <input type="text" name="keywords" class="form-control" placeholder="Keyword (Description)">
                 </div>
 
                 <div class="col-md-4 mb-3">
                     <label class="sr-only">Screen Resolution</label>
-                    <select name="screen" class="form-control">
+                    <select name="screen_resolution" class="form-control">
                       <option selected="true" disabled="disabled">Screen Resolution (All)</option>
-                      <option value="4">768p</option>
-                      <option value="6">1080p</option>
-                      <option value="8">1440p</option>
+                      {% for key,value in screen_choices.items %}
+                        <option value="{{ key }}">{{ value }}</option>
+                      {% endfor %}
                     </select>
                   </div>
 
@@ -70,9 +71,9 @@
                   <label class="sr-only">Cores</label>
                   <select name="cores" class="form-control">
                     <option selected="true" disabled="disabled">Cores (All)</option>
-                    <option value="4">4</option>
-                    <option value="6">6</option>
-                    <option value="8">8</option>
+                    {% for key,value in cores_choices.items %}
+                      <option value="{{ key }}">{{ value }}</option>
+                    {% endfor %}
                   </select>
                 </div>
               </div>
@@ -82,27 +83,25 @@
                   <label class="sr-only">Manufacturer</label>
                   <select name="manufacturer" class="form-control">
                     <option selected="true" disabled="disabled">Manufacturer (All)</option>
-                    <option value="AL">ASUS</option>
-                    <option value="AK">Acer</option>
-                    <option value="AZ">Lenovo</option>
+                    {% for key,value in manufacturer_choices.items %}
+                      <option value="{{ key }}">{{ value }}</option>
+                    {% endfor %}
                   </select>
                 </div>
                 <div class="col-md-4 mb-3">
                   <select name="price" class="form-control" id="type">
                     <option selected="true" disabled="disabled">Max Price (Any)</option>
-                    <option value="100000">500 €</option>
-                    <option value="200000">750 €</option>
-                    <option value="300000">1000 €</option>
-                    <option value="400000">1500 €</option>
+                    {% for key,value in price_choices.items %}
+                      <option value="{{ key }}">{{ value }}</option>
+                    {% endfor %}
                   </select>
                 </div>
                 <div class="col-md-4 mb-3">
                     <select name="ram" class="form-control" id="type">
                       <option selected="true" disabled="disabled">Ram (Any)</option>
-                      <option value="100000">4 gb</option>
-                      <option value="200000">8 gb</option>
-                      <option value="300000">16 gb</option>
-                      <option value="400000">32 gb</option>
+                      {% for key,value in ram_choices.items %}
+                        <option value="{{ key }}">{{ value }}</option>
+                      {% endfor %}
                     </select>
                   </div>
               </div>
@@ -127,7 +126,7 @@
                 <img class="card-img-top" src="{{ product.photo_main.url }}" alt="">
                 <div class="card-img-overlay">
                   <h2>
-                    <span class="badge badge-secondary text-white">{{ product.price }} €</span>
+                    <span class="badge badge-secondary text-white">{{ product.price | intcomma }} €</span>
                   </h2>
                 </div>
                 <div class="card-body">
@@ -180,7 +179,7 @@
                       <i class="fas fa-industry"></i> {{ product.manufacturer }}
                     </div>
                     <div class="col-6">
-                      <i class="fas fa-euro-sign"></i> {{ product.price }}
+                      <i class="fas fa-euro-sign"></i> {{ product.price | intcomma }}
                     </div>
                   </div>
                   <hr>

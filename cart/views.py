@@ -51,16 +51,13 @@ def remove_from_cart(request, pk):
     try:
         the_id = request.session['cart_id']
         cart = Cart.objects.get(id=the_id)
-        print(cart)
     except:
-        print('hi')
         return redirect(reverse('cart'))
 
     cartitem = CartItem.objects.get(id=pk)
     cartitem.cart = None
     # cartitem.delete()
     cartitem.save()
-    print('hi2')
 
     return redirect(reverse('cart'))
         
@@ -108,13 +105,6 @@ def add_to_cart(request, pk):
 def update_cart(request, pk):
 
     request.session.set_expiry(3600)
-    
-    try:
-        the_id = request.session['cart_id']
-    except:
-        pass
-
-    cart = Cart.objects.get(id=the_id)
 
     if request.method == 'POST':
         qty = request.POST['qty']

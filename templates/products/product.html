@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load humanize %}
 
 {% block content %}
 
@@ -58,7 +59,7 @@
             <!-- <img class="card-img-top" src="assets/img/realtors/kyle.jpg" alt="Seller of the month"> -->
             <div class="card-body text-center">
               <h1 class="card-title">{{ laptop.title }}</h1>
-              <h2 class="text-secondary">Price: {{ laptop.price }} €</h2>
+              <h2 class="text-secondary">Price: {{ laptop.price | intcomma }} €</h2>
               <h6>Product id: 1aq1DAS3213{{ laptop.product_id }}</h6>
             </div>
           </div>
