@@ -18,3 +18,12 @@ class UserAddres(models.Model):
 
     def __str__(self):
         return "%s, %s, %s, %s, %s " %(self.address, self.city, self.country, self.zipcode, self.user.username)
+
+
+
+class UserStripe(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING)
+    stripe_id = models.CharField(max_length=120)
+
+    def __str__(self):
+        return self.stripe_id
