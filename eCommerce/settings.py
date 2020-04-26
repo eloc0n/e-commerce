@@ -140,3 +140,8 @@ from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+
+
+# Stripe API key
+STRIPE_SECRET_KEY = 'sk_test_rNUpqlmmrCMhcVHCd2ahZfEm008vEIedj3'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_HlXgb9BggsHF2O6h4bUrt0u700zDIEXvik'
