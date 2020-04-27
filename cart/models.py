@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.db import models
 
 from products.models import Laptop
@@ -27,3 +29,12 @@ class Cart(models.Model):
 
     def __str__(self):
         return "Cart id: %s" %(self.id)
+
+
+    def decimal_total(self):
+        instance = Cart.objects.get(id=self.id)
+        two_decimals = Decimal(10) ** -2
+        instance.total = Decimal(self.total).quantize(two_decimals)
+        instance.save()
+
+        return  instance.total
