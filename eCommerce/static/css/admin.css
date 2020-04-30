@@ -26,3 +26,7 @@ h1 {
     font-size: 20px;
     color:  #10284e;
 }
+
+.dashboard #content {
+    width: auto;
+}
