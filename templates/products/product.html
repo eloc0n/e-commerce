@@ -21,6 +21,9 @@
     </div>
   </section>
 
+  <!-- Alerts -->
+  {% include 'partials/_alerts.html' %}
+
   <!-- Product -->
   <section id="listing" class="py-4">
     <div class="container">
@@ -179,18 +182,25 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
+          <form action="{% url 'contact' %}" method="POST">
+            {% csrf_token %}
+            {% if user.is_authenticated %}
+              <input type="hidden" name="user_id" value="{{ user.id }}">
+            {% else %}
+              <input type="hidden" name="user_id" value="0">
+            {% endif %}
+            <input type="hidden" name="product_id" value="{{ laptop.id }}">
             <div class="form-group">
               <label for="product_name" class="col-form-label">Product:</label>
-              <input type="text" name="product" class="form-control" value="{{ laptop.title }}" disabled>
+              <input type="text" name="product" class="form-control" value="{{ laptop.title }}">
             </div>
             <div class="form-group">
               <label for="name" class="col-form-label">Name:</label>
-              <input type="text" name="name" class="form-control" required>
+              <input type="text" name="name" class="form-control" {% if user.is_authenticated %} value="{{ user.first_name }} {{ user.last_name }}" {% endif %} required>
             </div>
             <div class="form-group">
               <label for="email" class="col-form-label">Email:</label>
-              <input type="email" name="email" class="form-control" required>
+              <input type="email" name="email" class="form-control" {% if user.is_authenticated %} value="{{ user.email }}" {% endif %} required>
             </div>
             <div class="form-group">
               <label for="phone" class="col-form-label">Phone:</label>

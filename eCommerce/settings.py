@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'cart.apps.CartConfig',
     'accounts.apps.AccountsConfig',
     'orders.apps.OrdersConfig',
+    'contact.apps.ContactConfig',
 ]
 
 MIDDLEWARE = [
@@ -145,3 +146,11 @@ MESSAGE_TAGS = {
 # Stripe API key
 STRIPE_SECRET_KEY = 'sk_test_rNUpqlmmrCMhcVHCd2ahZfEm008vEIedj3'
 STRIPE_PUBLISHABLE_KEY = 'pk_test_HlXgb9BggsHF2O6h4bUrt0u700zDIEXvik'
+
+
+# Email config
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT=587
+EMAIL_HOST_USER='jani.bratja@gmail.com'
+EMAIL_HOST_PASSWORD='gxvkuxrsxlgtzzje'
+EMAIL_USE_TLS=True

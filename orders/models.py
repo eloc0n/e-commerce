@@ -10,7 +10,6 @@ from cart.models import Cart
 
 STATUS_CHOICES = (
     ('Started', 'Started'),
-    ('Abandoned', 'Abandoned'),
     ('Finished', 'Finished'),
 )
 
