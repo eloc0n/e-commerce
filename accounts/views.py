@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import  User, auth
 
+from .models import UserFavourite
+from products.models import Laptop
 
 # Create your views here.
 def register(request):
@@ -60,3 +63,22 @@ def logout(request):
     messages.success(request, 'You are now logged out')
 
     return redirect('home')
+
+
+@login_required # Login required
+def add_to_favourite(request, pk):
+
+    laptop = Laptop.objects.get(id=pk)
+
+    already_added = UserFavourite.objects.all().filter(laptop=laptop, user=request.user)
+    if already_added:
+        messages.error(request, 'This product is already in your favourites list!')
+        return redirect('/product/'+str(laptop.id))
+        
+    favourite = UserFavourite()
+    favourite.laptop=laptop
+    favourite.user = request.user
+
+    favourite.save()
+
+    return redirect('/product/'+str(laptop.id))

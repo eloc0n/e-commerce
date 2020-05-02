@@ -86,12 +86,8 @@ def add_to_cart(request, pk):
 
     if request.method == 'POST':
         qty = request.POST['qty']
-        print(qty)
         if int(qty) >= 1:
-            print('hi')
             cart_item = CartItem.objects.create(cart=cart, product=product)
-            print(cart_item)
-
             cart_item.quantity = qty
             cart_item.save()
         

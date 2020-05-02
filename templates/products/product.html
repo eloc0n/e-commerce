@@ -62,7 +62,7 @@
             <div class="card-body text-center">
               <h1 class="card-title">{{ laptop.title }}</h1>
               <h2 class="text-secondary">Price: {{ laptop.price | intcomma }} €</h2>
-              <h6>Product id: 1aq1DAS3213{{ laptop.product_id }}</h6>
+              <!-- <h6>Product id: 1aq1DAS3213{{ laptop.product_id }}</h6> -->
             </div>
           </div>
           <form action="{% url 'add_to_cart' laptop.id %}" method="POST">
@@ -73,13 +73,14 @@
                   <input class="form-control" name="qty" type="number" value="1" min="1" >
                 </div>
               </div>  
-              <div class="col-5">
+              <div class="col-7">
                 <input type="submit" class="btn btn-primary btn-block" value="Add to cart">
-                <!-- <a href="#" class="btn btn-primary btn-block">Add to cart</a> -->
               </div> 
           </form>
-              <div class="col-4">
-                <a href="#" class="btn btn-danger btn-block"><i class="fas fa-heart"></i> Favourite</a>
+              <div class="col-2">
+                <a href="{% url 'add_to_favourite' laptop.id %}" class="btn btn-danger btn-block">
+                  <i class="far fa-heart"></i> 
+                </a>
               </div> 
             </div>
             <div class="py-5">
