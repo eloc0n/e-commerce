@@ -13,14 +13,15 @@
         <h1 style="text-align: center;">{{ empty_message }}</h1>
 
     {% else %}
+    <div class="table-responsive-sm">
     <div class="py-4">
-        <table class="table table-hover">
+        <table class="table text-nowrap">
             <thead class="thead-light">
             <tr>
                 <th scope="col">Products</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Price</th>
-                <th scope="col"></th>
+                <th scope="col">Remove</th>
             </tr>
             </thead>
             <tbody>
@@ -30,9 +31,9 @@
                 <td>
                     <form action="{% url 'update_cart' item.id %}" method="POST">
                     {% csrf_token %}
-                    <div class="col-4">
-                        <div class="input-group">
-                            <input class="form-control" name="qty" type="number" value="{{ item.quantity }}" min="1" >
+                    <div class="col-5">
+                        <div class="input-group flex-nowrap">
+                            <input  name="qty" class="form-control" type="number" value="{{ item.quantity }}" min="1" >
                             <button type="submit" class="btn"><i class="fas fa-sync-alt"></i></button>
                         </div>
                     </div>
@@ -45,7 +46,7 @@
             <tr>
                 <td></td>
                 <td></td>
-                <td>Total Price: {{ cart.decimal_total | intcomma}} €</td>
+                <td>Total Price ( <i>VAT not included</i> ): {{ cart.decimal_total | intcomma}} €</td>
                 <td></td>
             </tr>
             
@@ -55,7 +56,9 @@
             <a href="{% url 'address' %}" class="btn btn-secondary btn-block">Checkout</a>
         </div> 
     </div>
+    </div>
     {% endif %}
 </div>
+
 
 {% endblock %}

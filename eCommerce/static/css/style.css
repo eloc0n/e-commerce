@@ -72,6 +72,13 @@ img {
 .listing-preview a {
   position: relative; }
 
+.input-group > .form-control, .input-group > .custom-select, .input-group > .custom-file {
+  position: relative;
+  flex: 1 1 auto;
+  width: 80px;
+  margin-bottom: 0;
+}
+
 @media (max-width: 991px) {
   #showcase {
     padding-top: 4rem; }
