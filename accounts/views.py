@@ -81,4 +81,6 @@ def add_to_favourite(request, pk):
 
     favourite.save()
 
+    messages.success(request, 'Product added to your favourites list!')
+
     return redirect('/product/'+str(laptop.id))
