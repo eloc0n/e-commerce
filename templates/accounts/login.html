@@ -17,7 +17,10 @@
                     <!-- Alerts -->
                     {% include 'partials/_alerts.html' %}
                     <form action="{% url 'login' %}" method="POST">
-                        {% csrf_token %} <!-- Prevents Cross Site Forgery (security measures) -->
+                    {% csrf_token %} <!-- Prevents Cross Site Forgery (security measures) -->
+                    {% if request.GET.next %}
+                        <input type="hidden" name="next" value="{{request.GET.next}}">
+                    {% endif %}
                     <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" name="username" class="form-control" required>

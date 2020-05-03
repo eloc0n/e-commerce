@@ -17,7 +17,7 @@
                     <!-- Alerts -->
                     {% include 'partials/_alerts.html' %}
                     <form action="{% url 'register' %}" method="POST">
-                        {% csrf_token %} <!-- Prevents Cross Site Forgery (security measures) -->
+                    {% csrf_token %} <!-- Prevents Cross Site Forgery (security measures) -->
                     <div class="form-group">
                     <label for="first_name">First Name</label>
                     <input type="text" name="first_name" class="form-control" required>

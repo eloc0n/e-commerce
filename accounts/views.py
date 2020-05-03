@@ -8,6 +8,7 @@ from products.models import Laptop
 
 # Create your views here.
 def register(request):
+
     if request.method == 'POST':
         # Get form values
         first_name = request.POST['first_name']
@@ -42,15 +43,18 @@ def register(request):
 
 
 def login(request):
+
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            messages.success(request, 'You are logged in')
-            return redirect('home')
+            messages.success(request, 'You are now logged in')
+            if 'next' in request.POST:
+                return redirect(request.POST.get('next'))
+            else:
+                return redirect('/')
         else:
             messages.error(request, 'Invalid credentials')
             return redirect('login')
