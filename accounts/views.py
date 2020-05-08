@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import  User, auth
 
 from .models import UserFavourite
 from products.models import Laptop
+from orders.models import Order
 
 # Create your views here.
 def register(request):
@@ -51,8 +52,8 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.success(request, 'You are now logged in')
-            if 'next' in request.POST:
-                return redirect(request.POST.get('next'))
+            if 'next' in request.POST:  # After login redirect to previous page
+                return redirect(request.POST.get('next'))   
             else:
                 return redirect('/')
         else:
@@ -88,3 +89,25 @@ def add_to_favourite(request, pk):
     messages.success(request, 'Product added to your favourites list!')
 
     return redirect('/product/'+str(laptop.id))
+
+
+@login_required # Login required
+def remove_from_favourite(request, pk):
+    favourite = UserFavourite.objects.get(id=pk)
+    favourite.delete()
+
+    return redirect(reverse('dashboard'))
+
+
+@login_required # Login required
+def dashboard(request):
+
+    favourite_list = UserFavourite.objects.all().filter(user=request.user)
+    orders =  Order.objects.exclude(status='Started').filter(user=request.user)
+
+    context = {
+        'favourite_list':favourite_list,
+        'orders': orders,
+    }
+
+    return render(request, 'accounts/dashboard.html', context)
