@@ -2,12 +2,14 @@ import stripe
 
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
 from django.conf import settings
 
 from accounts.forms import UserAddressForm
 from accounts.models import UserAddres
 from .models import Order
-from cart.models import Cart
+from cart.models import Cart, CartItem
 from .utils import id_generator
 
 try:
@@ -63,15 +65,13 @@ def address(request):
 @login_required # require user login
 def checkout(request):
     try:
-        the_id = request.session['cart_id'] # if cart id exist grab it
+        the_id = request.session['cart_id'] # if cart id exists grab it
         cart = Cart.objects.get(id=the_id)
     except:
         the_id = None
         return redirect(reverse('cart'))
     
-    user_address = UserAddres.objects.filter(user=request.user).last() # Not secure, user can redirect to checkout through url without
-                                                                        # saving/creating address and the latest address 
-                                                                        # in queryset gets assigned instead (might be from previous users)
+    user_address = UserAddres.objects.filter(user=request.user).last() 
    
     try:
         new_order = Order.objects.get(cart=cart, address=user_address)
@@ -120,7 +120,7 @@ def checkout(request):
                 currency="eur",
                 source=card,
                 customer=customer.id,
-                description="My First Test Charge %s" %(request.user.username),
+                description="New order from user %s" %(request.user.username),
             )
 
             if charge['captured']:
@@ -128,10 +128,14 @@ def checkout(request):
                 new_order.save()
                 del request.session['cart_id']
                 del request.session['items_total']
-                # order success message
+                
+                messages.success(request, 'Transaction completed successfully. Thank you for you order!')
         
                 return redirect(reverse('home'))
-    
+            else:
+                messages.error(request, 'Something went wrong! We will contact you about details!')
+
+                return redirect(reverse('home'))
 
     context = {
         'order':new_order,
@@ -139,3 +143,18 @@ def checkout(request):
     }
 
     return render(request, 'orders/checkout.html', context)
+
+
+@login_required # Login required
+def order(request, pk):
+
+    order = Order.objects.get(id=pk)
+    cart_id = order.cart_id
+    cart = Cart.objects.get(id=cart_id)
+
+    context = {
+        'order_invoice' :order,
+        'cart':cart,
+    }
+
+    return render(request, 'orders/order.html', context)
