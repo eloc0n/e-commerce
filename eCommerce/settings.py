@@ -80,20 +80,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'eCommerce.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'laptop_uni_db',
-        'USER': 'postgres',
-        'PASSWORD': '8542',
-        'HOST': 'localhost'
-    }
-}
-
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -146,19 +132,6 @@ from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
-
-
-# Stripe API key
-STRIPE_SECRET_KEY = 'sk_test_rNUpqlmmrCMhcVHCd2ahZfEm008vEIedj3'
-STRIPE_PUBLISHABLE_KEY = 'pk_test_HlXgb9BggsHF2O6h4bUrt0u700zDIEXvik'
-
-
-# Email config
-EMAIL_HOST='smtp.gmail.com'
-EMAIL_PORT=587
-EMAIL_HOST_USER='jani.bratja@gmail.com'
-EMAIL_HOST_PASSWORD='gxvkuxrsxlgtzzje'
-EMAIL_USE_TLS=True
 
 
 try:
