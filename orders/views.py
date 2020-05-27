@@ -131,7 +131,7 @@ def checkout(request):
                 
                 messages.success(request, 'Transaction completed successfully. Thank you for you order!')
         
-                return redirect(reverse('home'))
+                return redirect(reverse('dashboard'))
             else:
                 messages.error(request, 'Something went wrong! We will contact you about details!')
 
