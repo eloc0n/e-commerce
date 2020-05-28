@@ -61,6 +61,17 @@ LOGIN_URL='/login/'
 
 ROOT_URLCONF = 'eCommerce.urls'
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'laptop_uni_db',
+        'USER': 'postgres',
+        'PASSWORD': '8542',
+        'HOST': 'localhost'
+    }
+}
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -132,6 +143,12 @@ from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+
+
+# Stripe API key
+STRIPE_SECRET_KEY = 'sk_test_rNUpqlmmrCMhcVHCd2ahZfEm008vEIedj3'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_HlXgb9BggsHF2O6h4bUrt0u700zDIEXvik'
+
 
 
 try:
