@@ -1,5 +1,5 @@
 # e-commerce
-e-commerce
+Built with Django, Bootstrap and Stripe api for payments.
 
 ![e-commerce](https://github.com/eloc0n/e-commerce/blob/master/presentation.gif?raw=true)
 
